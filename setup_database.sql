@@ -1,11 +1,17 @@
-CREATE DATABASE IF NOT EXISTS project;
+CREATE DATABASE IF NOT EXISTS easyservice;
 
-USE project;
+USE easyservice;
 
 CREATE TABLE IF NOT EXISTS users (
     userid INT PRIMARY KEY AUTO_INCREMENT,
-    phone VARCHAR(255) UNIQUE,
+	name VARCHAR(255),
+    phone_number VARCHAR(255) UNIQUE,
     password VARCHAR(255),
-    signed_up TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    other_details VARCHAR(255)
+    signed_up TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS service_category (
+	category_id INT PRIMARY KEY AUTO_INCREMENT,
+	category_name VARCHAR (255) UNIQUE
+);
+
