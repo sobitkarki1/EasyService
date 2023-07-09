@@ -3,7 +3,7 @@ require_once("config.php");
 
 // Check if the user is logged in
 if (!isset($_SESSION["phone_number"])) {
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
 }
 
@@ -17,10 +17,10 @@ $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) == 1) {
   $user = mysqli_fetch_assoc($result);
-  $user_id = $user['id'];
+  $user_id = $user['user_id'];
 } else {
   // User not found
-  header("Location: login.php");
+  header("Location: index.php");
   exit();
 }
 
@@ -51,8 +51,8 @@ mysqli_close($conn);
     <br>
 	<div>
         <div> Your phone number is <?php echo htmlspecialchars($user['phone_number']); ?></div>
-        <div> You created your profile in <?php echo htmlspecialchars($user['created_at']); ?></div>
-		<div> <a href="addService.php"> Provide service. </a> <div>
+        <div> You created your profile in <?php echo htmlspecialchars($user['signed_up']); ?></div>
+		<div> <a href="add_service.php"> Provide service. </a> <div>
     </div>
 	<br>
     <a href="logout.php" class="btn btn-secondary">Logout</a>

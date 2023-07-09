@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS easyservice;
 USE easyservice;
 
 CREATE TABLE IF NOT EXISTS users (
-    userid INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(255),
     phone_number VARCHAR(255) UNIQUE,
     password VARCHAR(255),

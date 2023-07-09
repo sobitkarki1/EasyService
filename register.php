@@ -9,10 +9,10 @@ $name_err = $phone_number_err = $password_err = $confirm_password_err = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Validate phone_number
     if (empty(trim($_POST['phone_number']))) {
-        $phone_number_err = 'Please enter a phone_number.';
+        $phone_number_err = 'Please enter a phone number.';
     } else {
         // Prepare a select statement
-        $sql = 'SELECT id FROM users WHERE phone_number = ?';
+        $sql = 'SELECT user_id FROM users WHERE phone_number = ?';
 
         if ($stmt = mysqli_prepare($conn, $sql)) {
             // Bind variables to the prepared statement as parameters
@@ -109,6 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
+	<div class="logo">
+		<img src="logo.png" alt="Logo" style="max-width: 700px;">
+	</div>
+	<br>
     <div class="wrapper">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
