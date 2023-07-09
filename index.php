@@ -49,8 +49,8 @@ mysqli_close($conn);
 </head>
 <body>
   
- <div class="logo">
-  <img src="logo.png" alt="Logo" style="max-width: 700px;">
+<div class="logo">
+  <img src="logo.png" alt="Logo" class="rounded mx-auto d-block">
 </div>
   <div class="container">
     <div class="row justify-content-center mt-5">

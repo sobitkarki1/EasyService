@@ -110,8 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
 	<div class="logo">
-		<img src="logo.png" alt="Logo" style="max-width: 700px;">
-	</div>
+        <img src="logo.png" alt="Logo" class="rounded mx-auto d-block">
+    </div>
 	<br>
     <div class="wrapper">
         <h2>Sign Up</h2>

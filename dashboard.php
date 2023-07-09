@@ -43,6 +43,9 @@ mysqli_close($conn);
 </head>
 <body>
   <div class="container">
+    <div class="logo">
+        <img src="logo.png" alt="Logo" class="rounded mx-auto d-block">
+    </div>
     <h2 class="welcome">Welcome, <?php echo $user["name"]; ?>!</h2>
 	<h3> Select service provider:</h3>
 	<h4> Plumber </h4>
