@@ -27,8 +27,6 @@ if (mysqli_num_rows($result) == 1) {
 // Close the statement
 mysqli_stmt_close($stmt);
 
-// Close the connection
-mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -37,8 +35,8 @@ mysqli_close($conn);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-  <link rel="stylesheet" href="style.css"> 
   <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="style.css"> 
 
 </head>
 <body>
@@ -48,9 +46,29 @@ mysqli_close($conn);
     </div>
     <h2 class="welcome">Welcome, <?php echo $user["name"]; ?>!</h2>
 	<h3> Select service provider:</h3>
-	<h4> Plumber </h4>
-	<h4> Electrician </h4>
-	<h4> Home Painter </h4>
+	
+	<?php
+
+// Retrieve service categories from the database
+$sql = "SELECT * FROM service_category";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    echo '<div class="custom-container">';
+    while ($row = mysqli_fetch_assoc($result)) {
+        $categoryId = $row["category_id"];
+        $categoryName = ucwords($row["category_name"]);
+        echo '<div class="category_item btn">- <a href="service_category?id=' . $categoryId . '">' . $categoryName . '</a></div><br>';
+    }
+    echo '</div>';
+} else {
+    echo '<p>No service categories found.</p>';
+}
+
+// Close the result set and database connection
+mysqli_free_result($result);
+?>
+	
     <br>
 	<div>
         <div> Your phone number is <?php echo htmlspecialchars($user['phone_number']); ?></div>
@@ -62,4 +80,13 @@ mysqli_close($conn);
     
   </div>
 </body>
+
+<?php
+
+
+// Close the connection
+mysqli_close($conn);
+
+?>
+
 </html>

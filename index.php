@@ -52,7 +52,7 @@ mysqli_close($conn);
 <div class="logo">
   <img src="logo.png" alt="Logo" class="rounded mx-auto d-block">
 </div>
-  <div class="container">
+  <div class="top-container">
     <div class="row justify-content-center mt-5">
       <div class="col-md-6">
         <div class="card">
