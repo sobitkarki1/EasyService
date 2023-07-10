@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <span><?php echo $phone_number_err; ?></span>
             </div>
             <div>
-                <label>Password</label>
+                <label>Choose new password</label>
                 <input type="password" name="password" value="<?php echo $password; ?>">
                 <span><?php echo $password_err; ?></span>
             </div>
