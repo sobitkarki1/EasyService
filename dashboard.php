@@ -58,7 +58,7 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $categoryId = $row["category_id"];
         $categoryName = ucwords($row["category_name"]);
-        echo '<div class="category_item btn">- <a href="service_category?id=' . $categoryId . '">' . $categoryName . '</a></div><br>';
+        echo '<div class="category_item btn">- <a href="service_category.php?id=' . $categoryId . '">' . $categoryName . '</a></div><br>';
     }
     echo '</div>';
 } else {
