@@ -8,6 +8,10 @@
   <div class="container">
     <h2>Add Service</h2>
     <form action="service_process.php" method="POST">
+	  <div class="form-group">
+        <label for="Bussiness E-mail">Bussiness E-mail:</label>
+        <input type="text" class="form-control" id="email" name="eamil">
+	  </div>
       <div class="form-group">
         <label for="serviceCategory">Service Category:</label>
         <select class="form-control" id="serviceCategory" name="serviceCategory" required>

@@ -18,3 +18,46 @@ Page index.html supplies following values in post request:
     - phone_number
 	- password (plaintext)
 	
+	
+# database
+
+Lets properly define database entities and relationship First
+
+## Dtabase
+
+user
+	user_id
+	user_name
+	phone_number
+	password
+	signed_up
+
+service_category
+	category_name
+	category_id
+
+service_provider
+	provider_id
+	phone
+	email
+	provider_name
+	user_id fk
+	
+service
+	service_id
+	service_name
+	description
+	qualification_proof
+	category_id fk
+	user_id
+
+booking
+	booking_id
+	booking_date
+	booking_status
+	service_id fk
+	
+review
+	review_id
+	review_comment
+	review_rating

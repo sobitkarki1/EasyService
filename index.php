@@ -21,7 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (password_verify($password, $row["password"])) {
       // Successful login
       $_SESSION["phone_number"] = $phone_number; // Store phone_number number in session variable
-	$_SESSION["user_id"] = $row["user_id"];
+	  $_SESSION["user_id"] = $row["user_id"];
+	  $_SESSION["name"] = $row["name"];
       header("Location: dashboard.php"); // Redirect to dashboard page
       exit();
     } else {
