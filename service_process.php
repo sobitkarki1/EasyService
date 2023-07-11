@@ -27,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Close the statement
     mysqli_stmt_close($stmt);
 	
+	echo "<br />";
+	
 	// Now lets fill service_provider table
 	$phone = $_SESSION["phone_number"] ?? '';
 	$email = $POST["email"] ?? '';

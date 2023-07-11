@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <!DOCTYPE html>
             <html>
             <head>
-                <title><?php echo $category_name; ?> Services</title>
+                <title><?php echo ucwords($category_name); ?> Services</title>
                 <link rel="stylesheet" href="bootstrap.min.css">
             </head>
             <body>

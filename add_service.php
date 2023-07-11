@@ -25,7 +25,7 @@
 
           if ($result) {
               while ($category = $result->fetch_assoc()) {
-                  echo '<option value="' . $category['category_id'] . '">' . $category['category_name'] . '</option>';
+                  echo '<option value="' . $category['category_id'] . '">' . ucwords($category['category_name']) . '</option>';
               }
               $result->free();
           } else {
