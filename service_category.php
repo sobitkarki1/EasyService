@@ -6,25 +6,59 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $category_id = $_GET['id'];
 
         // Prepare and execute the query
-        $query = "SELECT s.*, u.name, u.phone_number FROM service AS s
+        $query = "SELECT s.*, u.name, u.phone_number, c.category_name 
+                  FROM service AS s
                   INNER JOIN users AS u ON s.user_id = u.user_id
+                  INNER JOIN service_category AS c ON s.category_id = c.category_id
                   WHERE s.category_id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('i', $category_id);
         $stmt->execute();
 
-        // Fetch and print the results
+        // Fetch the results
         $result = $stmt->get_result();
 
-        while ($row = $result->fetch_assoc()) {
-            // Print the details of each service
-            echo "Service ID: " . $row['service_id'] . "<br>";
-            echo "Service Name: " . $row['service_name'] . "<br>";
-            echo "Description: " . $row['description'] . "<br>";
-            echo "User ID: " . $row['user_id'] . "<br>";
-            echo "User Name: " . $row['name'] . "<br>";
-            echo "User Phone: " . $row['phone_number'] . "<br>";
-            echo "<br>";
+        // Check if services are found
+        if ($result->num_rows > 0) {
+            $category_name = "";
+            if ($row = $result->fetch_assoc()) {
+                $category_name = $row['category_name'];
+            }
+
+            ?>
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title><?php echo $category_name; ?> Services</title>
+                <link rel="stylesheet" href="bootstrap.min.css">
+            </head>
+            <body>
+                <div class="container">
+                    <h2><?php echo $category_name; ?> Services</h2>
+                    <ul class="list-group">
+                        <?php
+                        mysqli_data_seek($result, 0); // Reset result pointer to beginning
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+                            <li class="list-group-item">
+                                <h4>Service ID: <?php echo $row['service_id']; ?></h4>
+                                <p>Service Name: <?php echo $row['service_name']; ?></p>
+                                <p>Description: <?php echo $row['description']; ?></p>
+                                <p>User ID: <?php echo $row['user_id']; ?></p>
+                                <p>User Name: <?php echo $row['name']; ?></p>
+                                <p>User Phone: <?php echo $row['phone_number']; ?></p>
+                            </li>
+                            <?php
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </body>
+            </html>
+            <?php
+        } else {
+            // No services found
+            echo "No services found.";
         }
 
         // Close the statement
