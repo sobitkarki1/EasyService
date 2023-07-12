@@ -45,48 +45,46 @@ mysqli_stmt_close($stmt);
         <img src="logo.png" alt="Logo" class="rounded mx-auto d-block">
     </div>
     <h2 class="welcome">Welcome, <?php echo $user["name"]; ?>!</h2>
-	<h3> Select service category:</h3>
-	
-	<?php
+    <h3>Select service category:</h3>
+    
+    <?php
 
-// Retrieve service categories from the database
-$sql = "SELECT * FROM service_category";
-$result = mysqli_query($conn, $sql);
+    // Retrieve service categories from the database
+    $sql = "SELECT * FROM service_category";
+    $result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    echo '<div class="custom-container">';
-    while ($row = mysqli_fetch_assoc($result)) {
-        $categoryId = $row["category_id"];
-        $categoryName = ucwords($row["category_name"]);
-        echo '<div class="category_item btn">- <a href="service_category.php?id=' . $categoryId . '">' . $categoryName . '</a></div><br>';
+    if (mysqli_num_rows($result) > 0) {
+        echo '<div class="custom-container">';
+        while ($row = mysqli_fetch_assoc($result)) {
+            $categoryId = $row["category_id"];
+            $categoryName = ucwords($row["category_name"]);
+            echo '<div class="category-item btn">- <a href="service_category.php?id=' . $categoryId . '">' . $categoryName . '</a></div><br>';
+        }
+        echo '</div>';
+    } else {
+        echo '<p>No service categories found.</p>';
     }
-    echo '</div>';
-} else {
-    echo '<p>No service categories found.</p>';
-}
 
-// Close the result set and database connection
-mysqli_free_result($result);
-?>
-	
+    // Close the result set and database connection
+    mysqli_free_result($result);
+    ?>
+    
     <br>
-	<div>
-        <div> Your phone number is <?php echo htmlspecialchars($user['phone_number']); ?></div>
-        <div> You created your profile in <?php echo htmlspecialchars($user['signed_up']); ?></div>
-		<div> <a href="add_service.php"> Provide service. </a> <div>
+    <div>
+        <div>Your phone number is <?php echo htmlspecialchars($user['phone_number']); ?></div>
+        <div>You created your profile in <?php echo htmlspecialchars($user['signed_up']); ?></div>
+        <div><a href="add_service.php" class="btn btn-primary">Provide Service</a></div>
     </div>
-	<br>
+    <br>
     <a href="logout.php" class="btn btn-secondary">Logout</a>
     
   </div>
+  <?php echo $_SESSION["user_id"]; ?>
 </body>
 
 <?php
-
-
 // Close the connection
 mysqli_close($conn);
-
 ?>
 
 </html>

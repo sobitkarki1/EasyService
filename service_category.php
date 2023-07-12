@@ -34,19 +34,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             </head>
             <body>
                 <div class="container">
-                    <h2><?php echo $category_name; ?> Services</h2>
+                    <h2><?php echo ucwords($category_name); ?> Services</h2>
                     <ul class="list-group">
                         <?php
                         mysqli_data_seek($result, 0); // Reset result pointer to beginning
                         while ($row = $result->fetch_assoc()) {
                             ?>
                             <li class="list-group-item">
-                                <h4>Service ID: <?php echo $row['service_id']; ?></h4>
-                                <p>Service Name: <?php echo $row['service_name']; ?></p>
+							
+							  <?php echo '<a href="service.php?id=' . $row['service_id'] . '">'; ?>
+                                <p>Name: <?php echo $row['name']; ?></p>
+                                <p>Phone Number :<?php echo $row['phone_number']; ?></p>
+							  </a>
+                                <p>Qualification: <?php echo $row['qualification']; ?></p>
                                 <p>Description: <?php echo $row['description']; ?></p>
-                                <p>User ID: <?php echo $row['user_id']; ?></p>
-                                <p>User Name: <?php echo $row['name']; ?></p>
-                                <p>User Phone: <?php echo $row['phone_number']; ?></p>
+								<div><a href="service.php" class="btn btn-primary">Request Booking</a></div>
                             </li>
                             <?php
                         }

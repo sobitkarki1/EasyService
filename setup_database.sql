@@ -40,5 +40,26 @@ CREATE TABLE IF NOT EXISTS service_provider (
   FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
+CREATE TABLE IF NOT EXISTS booking (
+	booking_id INT AUTO_INCREMENT PRIMARY KEY,
+	booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	booking_status INT,
+	service_id INT,
+    FOREIGN KEY (service_id) REFERENCES service (service_id)
+	);
+	
+CREATE TABLE IF NOT EXISTS review (
+	review_id INT AUTO_INCREMENT PRIMARY KEY,
+	review_comment VARCHAR(255),
+	review_rating INT,
+	service_id INT,
+    FOREIGN KEY (service_id) REFERENCES service (service_id)
+	)
+	
+	
+	
+	
+    
+
 
 

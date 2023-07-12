@@ -38,12 +38,15 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="serviceName">Service Name:</label>
-        <input type="text" class="form-control" id="serviceName" name="serviceName" required>
+        <label for="serviceName">Qualification:</label>
+        <input type="text" class="form-control" id="qualification" name="qualification" required>
+		<span> Mention any experience, educational qualification or formal training. </span>
       </div>
       <div class="form-group">
         <label for="description">Description:</label>
         <textarea class="form-control" id="description" name="description" required></textarea>
+		
+		<span>Mention description of service you provide.</span>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>

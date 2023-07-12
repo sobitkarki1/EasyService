@@ -5,16 +5,17 @@ require_once 'config.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate and sanitize the inputs
     $serviceCategory = $_POST['serviceCategory'] ?? '';
-    $serviceName = $_POST['serviceName'] ?? '';
+    $qualification = $_POST['qualification'] ?? '';
     $description = $_POST['description'] ?? '';
 
-    // Perform further validation if required
-    // ...
+    // Perform further 
+    
+	$user_id = $_SESSION["user_id"];
 
     // Insert the service data into the database
-    $query = "INSERT INTO service (service_name, description, category_id) VALUES (?, ?, ?)";
+    $query = "INSERT INTO service (qualification, description, category_id, user_id) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, 'ssi', $serviceName, $description, $serviceCategory);
+    mysqli_stmt_bind_param($stmt, 'ssii', $qualification, $description, $serviceCategory, $user_id);
 
     if (mysqli_stmt_execute($stmt)) {
         // Service added successfully
@@ -33,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$phone = $_SESSION["phone_number"] ?? '';
 	$email = $POST["email"] ?? '';
 	$provider_name = $_SESSION["name"];
-	$user_id = $_SESSION["user_id"];
 	
 	$query = "INSERT INTO service_provider (phone, email, provider_name, user_id)
 				VALUES (?, ?, ?, ?);";
@@ -55,3 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Close the database connection
 mysqli_close($conn);
 ?>
+
+<br>
+<br>
+<a href="dashboard.php"><b>Return to Dashboard<b></a>

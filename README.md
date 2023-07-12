@@ -49,7 +49,7 @@ service
 	description
 	qualification_proof
 	category_id fk
-	user_id
+	user_id fk
 
 booking
 	booking_id
