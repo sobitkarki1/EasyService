@@ -45,7 +45,7 @@ mysqli_stmt_close($stmt);
         <img src="logo.png" alt="Logo" class="rounded mx-auto d-block">
     </div>
     <h2 class="welcome">Welcome, <?php echo $user["name"]; ?>!</h2>
-	<h3> Select service provider:</h3>
+	<h3> Select service category:</h3>
 	
 	<?php
 
