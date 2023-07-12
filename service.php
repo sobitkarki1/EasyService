@@ -20,6 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
             <head>
                 <title>Service Details</title>
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+				 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+				<script>
+					$(document).ready(function() {
+						$('#rating').on('input change', function() {
+							$('#selected-rating').text($(this).val());
+						});
+					});
+				</script>
             </head>
             <body>
                 <div class="container">
@@ -54,6 +62,23 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 							<p class="card-text">No reviews yet.</p>
 							
 							
+                        </div>
+                    </div>
+					<div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add a Review</h5>
+							<form action="review_process.php" method="POST">
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <input type="range" class="form-control-range" id="rating" name="rating" min="1" max="5" step="0.5">
+		<div id="selected-rating">1</div>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" id="comment" name="comment" rows="5"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
                         </div>
                     </div>
 					
