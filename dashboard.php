@@ -79,7 +79,6 @@ mysqli_stmt_close($stmt);
     <a href="logout.php" class="btn btn-secondary">Logout</a>
     
   </div>
-  <?php echo $_SESSION["user_id"]; ?>
 </body>
 
 <?php

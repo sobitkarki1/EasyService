@@ -23,7 +23,7 @@ INSERT INTO service_category (category_name) VALUES ('painter');
 
 CREATE TABLE IF NOT EXISTS service (
   service_id INT AUTO_INCREMENT PRIMARY KEY,
-  service_name VARCHAR(100),
+  qualification VARCHAR(100),
   description TEXT,
   category_id INT,
   user_id INT,

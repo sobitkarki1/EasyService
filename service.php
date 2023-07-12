@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                     <h2>Service Details</h2>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Service ID: <?php echo $row["service_id"]; ?></h5>
+                            <p class="card-text">Name: <?php echo $row["name"]; ?></p>
                             <p class="card-text">Qualification: <?php echo $row["qualification"]; ?></p>
                             <p class="card-text">Description: <?php echo $row["description"]; ?></p>
                         </div>
@@ -34,12 +34,29 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
                     <br>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">User Information</h5>
+                            <h5 class="card-title">Provider Information</h5>
                             <p class="card-text">Name: <?php echo $row["name"]; ?></p>
                             <p class="card-text">Phone Number: <?php echo $row["phone_number"]; ?></p>
-                            <!-- Print other user-related information as needed -->
                         </div>
                     </div>
+					
+					<div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Booking</h5>
+							<a href="book_process.php" class="btn btn-danger mt-3"> Book Now </a>
+							<p><span> You can also call above phone number and manually arange. <span></p>
+							
+                        </div>
+                    </div>
+					<div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Reviews</h5>
+							<p class="card-text">No reviews yet.</p>
+							
+							
+                        </div>
+                    </div>
+					
                 </div>
             </body>
             </html>
