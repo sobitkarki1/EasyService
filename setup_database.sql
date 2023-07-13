@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS review (
 	review_rating INT,
 	service_id INT,
     FOREIGN KEY (service_id) REFERENCES service (service_id)
-	)
+	);
 	
 	
 	

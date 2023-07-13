@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
       <div class="form-group">
         <label for="rating">Rating:</label>
         <input type="range" class="form-control-range" id="rating" name="rating" min="1" max="5" step="0.5">
-		<div id="selected-rating">1</div>
+		<div id="selected-rating">3</div>
       </div>
       <div class="form-group">
         <label for="comment">Comment:</label>
@@ -96,6 +96,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
     // Close the database connection
     mysqli_close($conn);
 } else {
-    echo "<h2>Invalid format provided.</h2>";
+    echo "<h2>Booked Successfully!</h2>";
 }
 ?>
