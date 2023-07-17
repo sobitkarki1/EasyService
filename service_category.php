@@ -48,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 							  </a>
                                 <p>Qualification: <?php echo $row['qualification']; ?></p>
                                 <p>Description: <?php echo $row['description']; ?></p>
-								<div><a href="service.php" class="btn btn-primary">Request Booking</a></div>
                             </li>
                             <?php
                         }

@@ -24,6 +24,8 @@ if (mysqli_num_rows($result) == 1) {
   exit();
 }
 
+
+
 // Close the statement
 mysqli_stmt_close($stmt);
 

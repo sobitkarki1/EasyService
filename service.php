@@ -51,7 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 					<div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Booking</h5>
-							<a href="book_process.php" class="btn btn-danger mt-3"> Book Now </a>
+							<!-- HTML code for service.php -->
+							<?php echo '<a href="book_process.php?service_id=' . $service_id . '" class="btn btn-danger mt-3">Book Now</a>'; ?>
 							<p><span> You can also call above phone number and manually arange. <span></p>
 							
                         </div>
@@ -59,7 +60,39 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
 					<div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Reviews</h5>
-							<p class="card-text">No reviews yet.</p>
+							<?php
+require_once("config.php");
+
+// Retrieve the service ID from the URL parameter or any other source
+$service_id = $_GET['id']; // Assuming the service ID is passed via the URL parameter
+
+// Query to retrieve the reviews for the specified service ID
+$query = "SELECT * FROM review WHERE service_id = ?";
+$stmt = mysqli_prepare($conn, $query);
+mysqli_stmt_bind_param($stmt, "i", $service_id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+// Check if there are reviews for the service
+if (mysqli_num_rows($result) > 0) {
+    // Display the reviews
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "Review ID: " . $row['review_id'] . "<br>";
+        echo "Comment: " . $row['review_comment'] . "<br>";
+        echo "Rating: " . $row['review_rating'] . "<br>";
+        echo "<br>";
+    }
+} else {
+    echo "No reviews found for this service.";
+}
+
+// Close the statement
+mysqli_stmt_close($stmt);
+
+// Close the connection
+mysqli_close($conn);
+?>
+
 							
 							
                         </div>
@@ -94,7 +127,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
     }
 
     // Close the database connection
-    mysqli_close($conn);
 } else {
     echo "<h2>Booked Successfully!</h2>";
 }

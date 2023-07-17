@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS service_provider (
 CREATE TABLE IF NOT EXISTS booking (
 	booking_id INT AUTO_INCREMENT PRIMARY KEY,
 	booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	booking_status INT,
+	booking_status VARCHAR(200),
 	service_id INT,
     FOREIGN KEY (service_id) REFERENCES service (service_id)
 	);
